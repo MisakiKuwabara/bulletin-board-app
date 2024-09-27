@@ -11,7 +11,7 @@ import { Poststructure } from '../poststructure';
       <!--<p class="post-id">ID : {{postStructure.id}}</p>-->
       <h2 class="post-title">{{postStructure.title}}</h2>
       <p class="post-text">{{postStructure.text}}</p>
-      <button class="post-edit" type="submit">編集</button>
+      <button class="post-edit" type="submit" (click)="editPost()">編集</button>
       <button class="post-delete" type="submit" (click)="removePost()">削除</button>
     </section>
   `,
@@ -21,8 +21,13 @@ import { Poststructure } from '../poststructure';
 export class BoardComponent {
   @Input() postStructure!: Poststructure;
   @Output() deletePost = new EventEmitter<number>(); // 削除イベント, <>で扱うデータ型を指定
+  @Output() editPostEvent = new EventEmitter<Poststructure>();
 
   removePost() {
     this.deletePost.emit(this.postStructure.id); // 親コンポーネントに削除リクエスト
+  }
+
+  editPost() {
+    this.editPostEvent.emit(this.postStructure);
   }
 }

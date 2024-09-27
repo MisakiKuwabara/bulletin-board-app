@@ -1,19 +1,40 @@
 form {
+    /* width: 100%; */
+    margin-bottom: 50px;
     display: flex;
+    justify-content: center;
     flex-direction: column; /* フォーム要素を縦に並べる */
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+    border-bottom: solid black 1px;
   }
 
 p {
-    margin-top: 40px;
-    margin-bottom: 7px;
+    margin-top: 20px;
+    margin-bottom: 5px;
 }
 
 input, textarea {
-    width: 30%;
+    width: 400px;
+    font-size: 18px;
+}
+
+textarea {
+    height: 100px;
+    width: 400px;
     font-size: 18px;
 }
 
 button {
-    width: 60px;
-    margin-top: 40px;
+    width: 80px;
+    margin: 30px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #0056b3;
 }

@@ -1,0 +1,10 @@
+main {
+    margin: 0;
+    max-width: 100%;
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* フォーム要素を縦に並べる */
+}

@@ -11,14 +11,14 @@ import { Poststructure } from '../poststructure';
   template: `
     <section>
       <form (submit)="submitFunc($event)">
-        <p>タイトル</p>
-        <input type="text" [(ngModel)]="newPost.title" name="title" required>
-        <p>投稿内容</p>
-        <textarea [(ngModel)]="newPost.text" name="text" reqiured></textarea>
+        <p>タイトル（※最大50文字）</p>
+        <input type="text" maxlength="50" [(ngModel)]="newPost.title" name="title" required>
+        <p>投稿内容（※最大1000文字）</p>
+        <textarea maxlength="1000" [(ngModel)]="newPost.text" name="text" reqiured></textarea>
         <button type="submit">送信</button>
       </form>
       <section class="board">
-        <app-board *ngFor="let post of posts" [postStructure]="post"></app-board>
+        <app-board *ngFor="let post of posts" [postStructure]="post" (deletePost)="deleteFunc($event)"></app-board>
       </section>
   `,
   styleUrl: './post.component.css'
@@ -35,5 +35,9 @@ export class PostComponent {
       this.posts.push({ ...this.newPost });  // 現在の投稿をリストに追加
       this.newPost = { id: 0, title: '', text: '' };  // フォームをリセット
     }
+  }
+
+  deleteFunc(postId: number) { //"postId"は削除したい投稿のid
+    this.posts = this.posts.filter(post => post.id !== postId); // 投稿を削除
   }
 }

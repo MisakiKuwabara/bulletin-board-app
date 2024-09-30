@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BoardComponent } from '../board/board.component';
 import { Poststructure } from '../poststructure';
+import { UserService } from '../user-service.service';
 
 @Component({
   selector: 'app-post',
@@ -10,13 +11,13 @@ import { Poststructure } from '../poststructure';
   imports: [CommonModule, FormsModule, BoardComponent],
   template: `
     <section>
+      <h2 *ngIf="currentUser">ようこそ、{{ currentUser }}さん！</h2>
       <form (submit)="submitFunc($event)">
         <p>タイトル（※最大50文字）</p>
         <input type="text" maxlength="50" [(ngModel)]="newPost.title" name="title" required>
         <p>投稿内容（※最大1000文字）</p>
         <textarea maxlength="1000" [(ngModel)]="newPost.text" name="text" reqiured></textarea>
         <button type="submit">{{ isEditing ? '更新' : '送信' }}</button> <!-- モードに応じてボタンのテキストを変更 -->
-        <!--<button type="submit">送信</button>-->
       </form>
       <section class="board">
         <app-board *ngFor="let post of posts" 
@@ -29,10 +30,15 @@ import { Poststructure } from '../poststructure';
 })
 
 export class PostComponent {
-  newPost: Poststructure = { id: 0, title: '', text: '' };
+  newPost: Poststructure = { id: 0, userName: '', title: '', text: '' };
   posts: Poststructure[] = [];
   isEditing: boolean = false;  // 編集モードかどうかを示すフラグ
   editingPostId: number | null = null;  // 編集中の投稿IDを保持
+  currentUser: string | null = null;
+
+  constructor(private userService: UserService) {
+    this.currentUser = this.userService.getCurrentUser();
+  }
   
   submitFunc(event: Event) {
     event.preventDefault(); //ページのリロードを防ぐ
@@ -48,10 +54,11 @@ export class PostComponent {
       } else {
         // 新規投稿を追加
         this.newPost.id = this.posts.length + 1;
+        this.newPost.userName = this.currentUser || '匿名ユーザー';
         this.posts.push({ ...this.newPost });
       }
       // フォームをリセット
-      this.newPost = { id: 0, title: '', text: '' };
+      this.newPost = { id: 0, userName:'', title: '', text: '' };
     }
   }
 

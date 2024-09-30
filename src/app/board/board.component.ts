@@ -9,6 +9,7 @@ import { Poststructure } from '../poststructure';
   template: `
     <section class="each-post">
       <!--<p class="post-id">ID : {{postStructure.id}}</p>-->
+      <p class="post-userName">ユーザー名：{{postStructure.userName}}</p>
       <h2 class="post-title">{{postStructure.title}}</h2>
       <p class="post-text">{{postStructure.text}}</p>
       <button class="post-edit" type="submit" (click)="editPost()">編集</button>

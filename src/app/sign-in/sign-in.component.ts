@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../user-service.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { RegisterComponent } from '../register/register.component';
 
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, RouterModule],
   template: `
     <header>
       <h1>サインイン</h1>
@@ -17,7 +18,9 @@ import { Router } from '@angular/router';
       <p>パスワード</p>
       <input type="text" [(ngModel)]="password" name="password" required>
       <button type="submit">サインイン</button>
-      <p>アカウントをお持ちでないですか？</p>
+      <p class="register-link">
+        アカウントをお持ちでないですか？<a [routerLink]="['/app-register']">ユーザー登録</a>
+      </p>
       <p *ngIf="errorMessage">{{ errorMessage }}</p>
     </form>
   `,
@@ -36,7 +39,7 @@ export class SignInComponent {
     if (this.userService.signIn(this.userName, this.password)) {
       // サインイン成功後、投稿ページに移動
       alert('サインインが成功しました');
-      this.router.navigate(['/']); // ホームにリダイレクト
+      this.router.navigate(['/app-post']); // 投稿画面に遷移
     } else {
       this.errorMessage = 'ユーザー名またはパスワードが間違っています。';
     }

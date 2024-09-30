@@ -26,10 +26,10 @@ export class UserService {
     return false;
   }
 
-  // サインアウト
-  signOut(): void {
-    this.currentUser = null;
-  }
+  // // サインアウト
+  // signOut(): void {
+  //   this.currentUser = null;
+  // }
 
   // 現在のユーザーを取得
   getCurrentUser(): string | null {

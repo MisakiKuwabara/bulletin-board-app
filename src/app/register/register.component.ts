@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../user-service.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, RouterModule],
   template: `
     <header>
       <h1>ユーザー登録</h1>
@@ -16,12 +17,15 @@ import { UserService } from '../user-service.service';
       <p>パスワード</p>
       <input type="text" [(ngModel)]="password" name="password" required>
       <button type="submit">ユーザー登録</button>
-      <p>既にアカウントをお持ちですか？</p>
+      <p>既にアカウントをお持ちですか？
+        <a [routerLink]="['/']">サインイン</a>
+      </p>
       <p *ngIf="errorMessage">{{ errorMessage }}</p>
     </form>
   `,
   styleUrl: './register.component.css'
 })
+
 export class RegisterComponent {
   userName = '';
   password = '';

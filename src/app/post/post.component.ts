@@ -30,7 +30,7 @@ import { UserService } from '../user-service.service';
 })
 
 export class PostComponent {
-  newPost: Poststructure = { id: 0, userName: '', title: '', text: '' };
+  newPost: Poststructure = { id: 0, userName: '', title: '', text: '', date: new Date()};
   posts: Poststructure[] = [];
   isEditing: boolean = false;  // 編集モードかどうかを示すフラグ
   editingPostId: number | null = null;  // 編集中の投稿IDを保持
@@ -55,10 +55,11 @@ export class PostComponent {
         // 新規投稿を追加
         this.newPost.id = this.posts.length + 1;
         this.newPost.userName = this.currentUser || '匿名ユーザー';
+        this.newPost.date = new Date();
         this.posts.push({ ...this.newPost });
       }
       // フォームをリセット
-      this.newPost = { id: 0, userName:'', title: '', text: '' };
+      this.newPost = { id: 0, userName:'', title: '', text: '', date: new Date()};
     }
   }
 

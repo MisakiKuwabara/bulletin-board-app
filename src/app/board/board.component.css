@@ -27,6 +27,10 @@
     font-size: 18px;
 }
 
+.post-time {
+    font-size: 15px;
+}
+
 .post-edit {
     width: 60px;
     margin: 20px auto;

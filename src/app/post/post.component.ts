@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { BoardComponent } from '../board/board.component';
 import { Poststructure } from '../poststructure';
 import { UserService } from '../user-service.service';
+import { PostService } from '../post.service';
 
 @Component({
   selector: 'app-post',
@@ -35,9 +36,16 @@ export class PostComponent {
   isEditing: boolean = false;  // 編集モードかどうかを示すフラグ
   editingPostId: number | null = null;  // 編集中の投稿IDを保持
   currentUser: string | null = null;
+  postService: any;
 
   constructor(private userService: UserService) {
     this.currentUser = this.userService.getCurrentUser();
+  }
+
+  loadPosts() {
+    this.postService.getPosts().subscribe((posts: Poststructure[]) => {
+      this.posts = posts;
+    });
   }
   
   submitFunc(event: Event) {

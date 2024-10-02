@@ -12,7 +12,7 @@ import { UserService } from '../user-service.service';
   imports: [CommonModule, FormsModule, BoardComponent],
   template: `
     <section>
-      <h2 *ngIf="currentUser">ようこそ、{{ currentUser }}さん！</h2>
+      <h2 *ngIf="currentUser">ようこそ、{{ currentUser }} さん！</h2>
       <form (submit)="submitFunc($event)">
         <p>タイトル（※最大50文字）</p>
         <input type="text" maxlength="50" [(ngModel)]="newPost.title" name="title" required>

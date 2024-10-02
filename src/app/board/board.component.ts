@@ -10,13 +10,15 @@ import { Poststructure } from '../poststructure';
   template: `
     <section class="each-post">
       <!--<p class="post-id">ID : {{postStructure.id}}</p>-->
-      <p class="post-userName">ユーザー名：{{postStructure.userName}}</p>
+      <p class="post-userName">ユーザー名： {{postStructure.userName}}</p>
       <h2 class="post-title">{{postStructure.title}}</h2>
       <p class="post-text">{{postStructure.text}}</p>
-      <p class="post-time">投稿日時：{{ postStructure.date | date:'yyyy/MM/dd HH:mm:ss' }}</p>
-      <p *ngIf="postStructure.updatedDate" class="post-updated-time">
-        更新日時：{{ postStructure.updatedDate | date:'yyyy/MM/dd HH:mm:ss' }}
-      </p>
+      <div class="post-times">
+        <p class="post-time">投稿日時：{{ postStructure.date | date:'yyyy/MM/dd HH:mm:ss' }}</p>
+        <p *ngIf="postStructure.updatedDate" class="post-updated-time">
+          更新日時：{{ postStructure.updatedDate | date:'yyyy/MM/dd HH:mm:ss' }}
+        </p>
+      </div>
       <button class="post-edit" type="submit" (click)="editPost()">編集</button>
       <button class="post-delete" type="submit" (click)="removePost()">削除</button>
     </section>

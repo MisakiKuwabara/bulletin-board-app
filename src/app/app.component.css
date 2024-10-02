@@ -1,5 +1,14 @@
-main {
+h1 {
     margin: 0;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    background-color: #dadada;
+}
+
+.content {
+    margin: 0;
+    padding-top: 20px;
     max-width: 100%;
     background-color: #f8f9fa;
     font-family: "Arial", "メイリオ";

@@ -18,10 +18,8 @@ import { RegisterComponent } from '../register/register.component';
       <p>パスワード</p>
       <input type="text" [(ngModel)]="password" name="password" required>
       <button type="submit">サインイン</button>
-      <p class="register-link">
-        アカウントをお持ちでないですか？
-        <br/><a [routerLink]="['/app-register']">ユーザー登録</a>
-      </p>
+      <p class="register-link">アカウントをお持ちでないですか？</p>
+      <a [routerLink]="['/app-register']">ユーザー登録</a>
       <p *ngIf="errorMessage">{{ errorMessage }}</p>
     </form>
   `,

@@ -17,9 +17,8 @@ import { RouterModule } from '@angular/router';
       <p>パスワード</p>
       <input type="text" [(ngModel)]="password" name="password" required>
       <button type="submit">ユーザー登録</button>
-      <p>既にアカウントをお持ちですか？
-        <br/><a [routerLink]="['/']">サインイン</a>
-      </p>
+      <p class="signIn-link">既にアカウントをお持ちですか？</p>
+      <a [routerLink]="['/']">サインイン</a>
       <p *ngIf="errorMessage">{{ errorMessage }}</p>
     </form>
   `,

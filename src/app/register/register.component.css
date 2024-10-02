@@ -39,3 +39,13 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+
+.signIn-link {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a {
+    margin-left: auto;
+    margin-right: auto; 
+}

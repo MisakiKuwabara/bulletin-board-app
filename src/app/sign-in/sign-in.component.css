@@ -11,7 +11,7 @@ form {
     justify-content: center;
     flex-direction: column; /* フォーム要素を縦に並べる */
     background-color: #f8f9fa;
-    font-family: Arial, sans-serif;
+    font-family: "Arial", "メイリオ";
   }
 
 p {

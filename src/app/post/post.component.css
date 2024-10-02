@@ -6,7 +6,7 @@ form {
     flex-direction: column; /* フォーム要素を縦に並べる */
     background-color: #f8f9fa;
     font-family: Arial, sans-serif;
-    border-bottom: solid black 1px;
+    border-bottom: solid rgb(150, 149, 149) 2px;
   }
 
 p {
@@ -19,6 +19,7 @@ input {
     display: flex;
     justify-content: center;
     font-size: 18px;
+    margin-bottom: 10px;
 }
 
 textarea {

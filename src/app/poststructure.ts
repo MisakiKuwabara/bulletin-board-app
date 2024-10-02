@@ -3,5 +3,6 @@ export interface Poststructure {
     userName: string,
     title: string,
     text: string,
-    date: Date
+    date: Date,
+    updatedDate?: Date
 }

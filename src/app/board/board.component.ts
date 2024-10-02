@@ -14,6 +14,9 @@ import { Poststructure } from '../poststructure';
       <h2 class="post-title">{{postStructure.title}}</h2>
       <p class="post-text">{{postStructure.text}}</p>
       <p class="post-time">投稿日時：{{ postStructure.date | date:'yyyy/MM/dd HH:mm:ss' }}</p>
+      <p *ngIf="postStructure.updatedDate" class="post-updated-time">
+        更新日時：{{ postStructure.updatedDate | date:'yyyy/MM/dd HH:mm:ss' }}
+      </p>
       <button class="post-edit" type="submit" (click)="editPost()">編集</button>
       <button class="post-delete" type="submit" (click)="removePost()">削除</button>
     </section>

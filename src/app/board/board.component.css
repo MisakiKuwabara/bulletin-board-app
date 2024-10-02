@@ -13,7 +13,7 @@
 } */
 
 .post-userName {
-    font-size: 18px;
+    font-size: 15px;
 }
 
 .post-title {
@@ -29,6 +29,12 @@
 
 .post-time {
     font-size: 15px;
+    color: rgb(107, 107, 107);
+}
+
+.post-updated-time {
+    font-size: 15px;
+    color: rgb(107, 107, 107);
 }
 
 .post-edit {

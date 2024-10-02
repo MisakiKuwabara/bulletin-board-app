@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { BoardComponent } from '../board/board.component';
 import { Poststructure } from '../poststructure';
 import { UserService } from '../user-service.service';
-import { PostService } from '../post.service';
+//mport { PostService } from '../post.service';
 
 @Component({
   selector: 'app-post',
@@ -55,7 +55,7 @@ export class PostComponent {
         // 編集モードの場合、投稿を更新
         const postIndex = this.posts.findIndex(post => post.id === this.editingPostId);
         if (postIndex !== -1) {
-          this.posts[postIndex] = { ...this.newPost, id: this.editingPostId };  // 投稿を更新
+          this.posts[postIndex] = { ...this.newPost, id: this.editingPostId, updatedDate: new Date()};  // 投稿を更新
         }
         this.isEditing = false; //編集モードの解除
         this.editingPostId = null;
@@ -80,5 +80,6 @@ export class PostComponent {
     this.newPost = { ...post };
     this.isEditing = true;
     this.editingPostId = post.id;  // 編集対象のIDを保持
+    window.scrollTo(0, 0);
   }
 }
